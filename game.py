@@ -155,7 +155,11 @@ def update():
             try:
                 sounds.bat.play() # Replace 'hurt' with whatever sound file you want to use
             except:
-                pass # Just in case you don't have a hurt sound yet    
+                pass # Just in case you don't have a hurt sound yet 
+
+    # Win condition
+    if score >= 10:
+        game_state = "gameover"           
 
 def draw():
     # Draw background for all screens
@@ -179,6 +183,15 @@ def draw():
         for pokermad in enemies:
             pokermad.draw()
 
+    elif game_state == "gameover" and score >= 10:
+        # Draw Win Screen UI
+        screen.draw.text('You Win!', centerx=400, centery=150, color=brown, fontsize=80)
+        screen.draw.text(f'Score: {score}', centerx=400, centery=250, color=white, fontsize=60)
+        
+        # Tell the player how to restart
+        screen.draw.text('Press R to Restart', centerx=400, centery=350, color=white, fontsize=40)
+        music.stop()        
+
     elif game_state == "gameover":
         # Draw Game Over UI
         screen.draw.text('Game Over', centerx=400, centery=150, color=red, fontsize=80)
@@ -187,5 +200,5 @@ def draw():
         # Tell the player how to restart
         screen.draw.text('Press R to Restart', centerx=400, centery=350, color=white, fontsize=40)
         music.stop()
-
+ 
 pgzrun.go()
