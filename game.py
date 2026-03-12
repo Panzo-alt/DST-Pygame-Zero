@@ -172,10 +172,12 @@ def draw():
         # Draw Start Screen UI
         screen.draw.text('KNIGHT RUNNER', centerx=400, centery=150, color=white, fontsize=80)
         screen.draw.text('Press SPACE to Start', centerx=400, centery=300, color=white, fontsize=50)
+        screen.draw.text('Collect coins to increase your score, but avoid the bats and pokermads!', centerx=400, centery=350, color=white, fontsize=30)
+        screen.draw.text('Reach a score of 10 to win!', centerx=400, centery=400, color=white, fontsize=30)
         
         # Display current mute status
         mute_status = "MUTED" if is_muted else "ON"
-        screen.draw.text(f"Press 'M' to Toggle Audio (Currently: {mute_status})", centerx=400, centery=400, color=white, fontsize=30)
+        screen.draw.text(f"Press 'M' to Toggle Audio (Currently: {mute_status})", centerx=400, centery=450, color=white, fontsize=30)
 
     elif game_state == "playing":
         # Draw game objects
