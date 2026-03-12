@@ -136,9 +136,10 @@ def update():
         game_state = "gameover"
         enemies.remove(pokermad) #delete enemies
 
-        if deathsound == False:
-            sounds.gameover.play() #play game over sound 
-
+        if not is_muted:
+            if deathsound == False:
+                sounds.gameover.play() #play game over sound 
+    
         deathsound = True #ensures game over sound only plays once
 
     # Bat and knight collision (Square root the score)
@@ -159,6 +160,8 @@ def update():
 
     # Win condition
     if score >= 10:
+        if not is_muted:
+            sounds.cheer.play()
         game_state = "gameover"           
 
 def draw():
