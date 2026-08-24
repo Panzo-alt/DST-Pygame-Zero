@@ -1,11 +1,15 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_data_files
+
+datas = [('images', 'images'), ('sounds', 'sounds'), ('music', 'music'), ('fonts', 'fonts')]
+datas += collect_data_files('pgzero')
 
 
 a = Analysis(
     ['game.py'],
     pathex=[],
     binaries=[],
-    datas=[('images', 'images'), ('sounds', 'sounds'), ('music', 'music'), ('fonts', 'fonts')],
+    datas=datas,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
